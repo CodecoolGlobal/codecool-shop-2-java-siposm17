@@ -60,3 +60,33 @@
 {
     margin: 0 0 11px;
 }
+
+.jumbotron {
+    position: relative;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.cart-quantity {
+    width: 40px;
+    text-align: center;
+}
+
+.subtotal {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#cart-link {
+    position: absolute;
+    display: inline-block;
+    padding: 8px;
+    bottom: 0;
+    right: 0;
+}
