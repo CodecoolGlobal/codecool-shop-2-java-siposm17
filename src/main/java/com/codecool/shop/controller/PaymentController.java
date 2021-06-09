@@ -21,6 +21,8 @@ public class PaymentController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        context.setVariable("userName", User.getInstance().getName());
+        context.setVariable("cartSum", User.getInstance().cartSum());
         context.setVariable("totalPrice", User.getInstance().cartSumPrice());
         engine.process("product/payment.html", context, resp.getWriter());
     }

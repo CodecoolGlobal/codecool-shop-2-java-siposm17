@@ -33,7 +33,11 @@ public class CartUpdateController extends HttpServlet {
             resp.sendRedirect("/cart");
             return;
         }
-        User.getInstance().updateCart(productId, quantity);
+        try {
+            User.getInstance().updateCart(productId, quantity);
+        } catch (ConcurrentModificationException ex) {
+            System.out.println(ex.getStackTrace());
+        }
         resp.sendRedirect("/cart");
     }
 }

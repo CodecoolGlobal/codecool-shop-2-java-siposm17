@@ -22,6 +22,7 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <script src="/static/js/script.js" defer></script>
 </head>
 
 <body>
@@ -43,16 +44,15 @@
                 </div>
                 <div class="card-body">
                     <form method="GET" action="/cart/update">
-                        <div class="card-text">
+                        <div class="card-text clearfix">
                             <input type="hidden" name="productid" th:value="${product.key.id}">
-                            <input min="0" style="width: 40px;" name="quantity" type="number" th:value="${product.value}">
-                            <span th:text="' X ' + ${product.key.defaultPrice} + ' USD'"></span>
+                            <button type="submit" class="btn btn-sm btn-success minus-btn float-start">-</button>
+                            <input min="0" class="cart-quantity float-start" name="quantity" type="text" th:value="${product.value}">
+                            <button type="submit" class="btn btn-sm btn-success plus-btn float-start">+</button>
+                            <span style="margin-left: 10px;" th:text="' X ' + ${product.key.defaultPrice} + ' USD'"></span>
                         </div>
                         <div th:with="sumPrice=(${product.key.defaultPrice} * ${product.value})" class="card-text">
-                            <p class="lead" th:text="'Subtotal: ' + ${#numbers.formatDecimal(sumPrice, 0, 'COMMA', 2, 'POINT')} + ' USD'">100 USD</p>
-                        </div>
-                        <div class="card-text">
-                            <button type="submit" class="btn btn-success">Update</button>
+                            <p class="lead subtotal" th:text="'Subtotal: ' + ${#numbers.formatDecimal(sumPrice, 0, 'COMMA', 2, 'POINT')} + ' USD'">100 USD</p>
                         </div>
                     </form>
                 </div>
