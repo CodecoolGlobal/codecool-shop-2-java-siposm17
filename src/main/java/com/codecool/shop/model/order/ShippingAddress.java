@@ -8,4 +8,9 @@ public class ShippingAddress {
         this.zipcode = zipcode;
         this.address = address;
     }
+
+    @Override
+    public String toString(){
+        return zipcode + " " + city + " " + address + ", " + country;
+    }
 }

@@ -26,7 +26,6 @@
 
 <div class="jumbotron text-center">
     <h1><a href="/">Codecool Shop</a></h1>
-    <a href="/cart" th:text="${userName + '\'s shopping cart: ' + cartSum + ' item(s)'}"></a>
 </div>
 
 <div class="container">
@@ -53,14 +52,15 @@
                             <div class="tab-content">
                                 <!-- credit card info-->
                                 <div id="credit-card" class="tab-pane fade show active pt-3">
-                                    <form role="form" onsubmit="event.preventDefault()">
+                                    <form role="form" action="/payment" method="post">
+                                        <input type="hidden" name="payment-type" value="credit-card">
                                         <div class="form-group"> <label for="username">
                                             <h6>Card Owner</h6>
                                         </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
                                         <div class="form-group"> <label for="cardNumber">
                                             <h6>Card number</h6>
                                         </label>
-                                            <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
+                                            <div class="input-group"> <input id="cardNumber" type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
                                                 <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
                                             </div>
                                         </div>
@@ -78,20 +78,32 @@
                                                 </label> <input type="text" required class="form-control"> </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                                        <div class="form-check" style="margin-bottom: 20px;">
+                                            <input class="form-check-input" name="error-checkbox" type="checkbox" value="true" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Make payment with error
+                                            </label>
+                                        </div>
+                                        <div class="card-footer"> <button type="submit" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>
                                     </form>
-                                </div>
                             </div> <!-- End -->
                             <!-- Paypal info -->
                             <div id="paypal" class="tab-pane fade pt-3">
-                                <form role="form" onsubmit="event.preventDefault()">
+                                <form role="form" action="/payment" method="POST">
+                                    <input type="hidden" name="payment-type" value="paypal">
                                     <div class="form-group"> <label for="username">
                                         <h6>Email</h6>
-                                    </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
-                                    <div class="form-group"> <label for="username">
+                                    </label> <input type="text" name="username" id="username" placeholder="Card Owner Name" required class="form-control "> </div>
+                                    <div class="form-group"> <label for="username2">
                                         <h6>Password</h6>
-                                    </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
-                                    <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>
+                                    </label> <input type="text" name="username" id="username2" placeholder="Card Owner Name" required class="form-control "> </div>
+                                    <div class="form-check" style="margin-bottom: 20px;">
+                                        <input class="form-check-input" name="error-checkbox" type="checkbox" value="true" id="flexCheckDefault2">
+                                        <label class="form-check-label" for="flexCheckDefault2">
+                                            Make payment with error
+                                        </label>
+                                    </div>
+                                    <div class="card-footer"> <button type="submit" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>
                                 </form>
                             </div> <!-- End -->
                             <!-- End -->

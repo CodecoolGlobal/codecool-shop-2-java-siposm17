@@ -5,6 +5,9 @@ import com.codecool.shop.model.User;
 import com.codecool.shop.model.order.BillingAddress;
 import com.codecool.shop.model.order.Order;
 import com.codecool.shop.model.order.ShippingAddress;
+import com.codecool.shop.serialization.FileWriterLocal;
+import com.codecool.shop.util.EmailSender;
+import com.google.gson.Gson;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -29,9 +32,19 @@ public class PaymentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("totalPrice", User.getInstance().cartSumPrice());
-        engine.process("product/payment.html", context, resp.getWriter());
+
+        String paymentType = req.getParameter("payment-type");
+        String isError = req.getParameter("error-checkbox") != null ? "true" : "false";
+        context.setVariable("isError", isError);
+        context.setVariable("orderDetails", User.getInstance().getNewOrder());
+        context.setVariable("total", User.getInstance().cartSumPrice());
+
+        EmailSender.sendEmail(User.getInstance().getNewOrder());
+        FileWriterLocal.serializeObj(User.getInstance().getNewOrder());
+
+        engine.process("product/confirmation-page.html", context, resp.getWriter());
     }
 }

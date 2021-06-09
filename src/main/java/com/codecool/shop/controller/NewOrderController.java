@@ -25,13 +25,13 @@ public class NewOrderController extends HttpServlet {
                     req.getParameter("billing-country"),
                     req.getParameter("billing-city"),
                     req.getParameter("billing-zip"),
-                    req.getParameter("billing-address")
+                    req.getParameter("billing-street")
                 ),
                 new ShippingAddress(
                         req.getParameter("shipping-country"),
                         req.getParameter("shipping-city"),
                         req.getParameter("shipping-zip"),
-                        req.getParameter("shipping-address")
+                        req.getParameter("shipping-street")
                 )
         );
         resp.sendRedirect("/payment");
