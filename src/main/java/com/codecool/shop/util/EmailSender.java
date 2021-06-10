@@ -35,13 +35,13 @@ public class EmailSender {
     }
 
     private static String orderToString(Order order) {
-        String result = "Dear " + order.getName() + "\n" +
-                "We are happy to confirm that your order was successfull" + "\n" +
-                "Your cart total is: " + "$" + order.cartSumPrice() + "\n" +
-                "Phone number:" + order.getPhoneNumber() + "\n" +
+        String result = "Dear " + order.getName() + ",\n\n" +
+                "We are happy to confirm that your order was successfull. \n" + "\n" +
+                "\tYour cart total is: " + "$" + order.cartSumPrice() + "\n" +
+                "\tPhone number:" + order.getPhoneNumber() + "\n\n" +
                 "We are going to send your package to the following address:" + "\n" +
                 order.getBillingAddress().toString() + "\n" + "\n" +
-                "Best regards, Codecool Shop DevTeam";
+                "Best regards,\n Codecool Shop DevTeam";
         return result;
     }
 }

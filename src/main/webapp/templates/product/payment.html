@@ -56,7 +56,7 @@
                                         <input type="hidden" name="payment-type" value="credit-card">
                                         <div class="form-group"> <label for="username">
                                             <h6>Card Owner</h6>
-                                        </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
+                                        </label> <input type="text" name="cardOwnerName" placeholder="Card Owner Name" required class="form-control "> </div>
                                         <div class="form-group"> <label for="cardNumber">
                                             <h6>Card number</h6>
                                         </label>
@@ -69,13 +69,13 @@
                                                 <div class="form-group"> <label><span class="hidden-xs">
                                                     <h6>Expiration Date</h6>
                                                 </span></label>
-                                                    <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> <input type="number" placeholder="YY" name="" class="form-control" required> </div>
+                                                    <div class="input-group"> <input type="number" placeholder="MM" name="expirationDate" class="form-control" required> <input type="number" placeholder="YY" name="" class="form-control" required> </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                                                     <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
-                                                </label> <input type="text" required class="form-control"> </div>
+                                                </label> <input name="CVS" type="text" required class="form-control"> </div>
                                             </div>
                                         </div>
                                         <div class="form-check" style="margin-bottom: 20px;">
@@ -93,10 +93,10 @@
                                     <input type="hidden" name="payment-type" value="paypal">
                                     <div class="form-group"> <label for="username">
                                         <h6>Email</h6>
-                                    </label> <input type="text" name="username" id="username" placeholder="Card Owner Name" required class="form-control "> </div>
+                                    </label> <input type="text" name="email" id="username" placeholder="E-mail address" required class="form-control "> </div>
                                     <div class="form-group"> <label for="username2">
                                         <h6>Password</h6>
-                                    </label> <input type="text" name="username" id="username2" placeholder="Card Owner Name" required class="form-control "> </div>
+                                    </label> <input type="password" name="password" id="username2" placeholder="Password" required class="form-control "> </div>
                                     <div class="form-check" style="margin-bottom: 20px;">
                                         <input class="form-check-input" name="error-checkbox" type="checkbox" value="true" id="flexCheckDefault2">
                                         <label class="form-check-label" for="flexCheckDefault2">

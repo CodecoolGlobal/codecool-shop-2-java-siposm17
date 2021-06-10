@@ -3,7 +3,9 @@ package com.codecool.shop.controller;
 import com.codecool.shop.model.User;
 import com.codecool.shop.model.order.BillingAddress;
 import com.codecool.shop.model.order.Order;
+import com.codecool.shop.model.order.OrderType;
 import com.codecool.shop.model.order.ShippingAddress;
+import com.codecool.shop.util.FileWriterLocal;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -34,6 +36,8 @@ public class NewOrderController extends HttpServlet {
                         req.getParameter("shipping-street")
                 )
         );
+        User.getInstance().getNewOrder().setOrderType(OrderType.CHECKEDOUT);
+        FileWriterLocal.saveAdminLog(User.getInstance().getNewOrder());
         resp.sendRedirect("/payment");
     }
 }

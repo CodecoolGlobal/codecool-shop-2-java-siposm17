@@ -83,6 +83,10 @@ a:link, a:visited, a:hover, a:active {
     margin-top: 10px;
 }
 
+.product-pic{
+
+}
+
 #cart-link {
     position: absolute;
     display: inline-block;
