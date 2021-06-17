@@ -29,6 +29,6 @@ public class CartController extends HttpServlet {
         int productId = (productIdParam != null) ? Integer.parseInt(productIdParam) : 0;
         newUser.add(productService.getProduct(productId));
 
-        resp.sendRedirect("/");
+        resp.sendRedirect(req.getHeader("referer"));
     }
 }

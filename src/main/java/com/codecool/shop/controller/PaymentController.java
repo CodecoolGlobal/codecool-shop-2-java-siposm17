@@ -56,7 +56,7 @@ public class PaymentController extends HttpServlet {
             User.getInstance().getNewOrder().setPayment(payment);
             context.setVariable("orderDetails", User.getInstance().getNewOrder());
             context.setVariable("total", User.getInstance().cartSumPrice());
-            EmailSender.sendEmail(User.getInstance().getNewOrder());
+            if (isError.equals("false")) EmailSender.sendEmail(User.getInstance().getNewOrder());
         }  catch (Exception ex) {
             User.getInstance().getNewOrder().setOrderType(OrderType.FAILED);
             isError = "true";
