@@ -23,6 +23,12 @@ public class ProductService{
         this.productSupplierDao = SupplierDaoMem.getInstance();
     }
 
+    public ProductService(ProductDao productDao, ProductCategoryDao productCategoryDao, SupplierDao productSupplierDao) {
+        this.productDao = productDao;
+        this.productCategoryDao = productCategoryDao;
+        this.productSupplierDao = productSupplierDao;
+    }
+
     public ProductCategory getProductCategory(int categoryId){
         return productCategoryDao.find(categoryId);
     }
