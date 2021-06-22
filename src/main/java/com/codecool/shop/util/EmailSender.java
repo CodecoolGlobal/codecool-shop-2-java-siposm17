@@ -7,10 +7,13 @@ import com.sendgrid.*;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 public class EmailSender {
+    private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
     public static void sendEmail(Order order) throws IOException {
         String emailContent = orderToString(order);
         Email from = new Email("siposm17@gmail.com");
@@ -29,7 +32,9 @@ public class EmailSender {
             System.out.println(response.getStatusCode());
             System.out.println(response.getBody());
             System.out.println(response.getHeaders());
+            logger.info(String.format("Email sent to %s about successfull order.", order.getEmail()));
         } catch (IOException ex) {
+            logger.error(String.format("Sendng email to %s was unsuccessfull", order.getEmail()));
             throw ex;
         }
     }
