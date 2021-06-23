@@ -61,15 +61,16 @@
     margin: 0 0 11px;
 }
 
-.jumbotron {
+body .jumbotron {
     position: relative;
     padding: 4rem 2rem;
     background-color: #e9ecef;
     border-radius: .3rem;
+    margin-bottom: 0;
 }
 
 .navbar {
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -96,4 +97,31 @@ a:link, a:visited, a:hover, a:active {
     padding: 8px;
     bottom: 0;
     right: 0;
+}
+
+.jumbotron i.bi-cart3 {
+    margin-right: 5px;
+    font-size: 25px;
+}
+
+.jumbotron a:link, .jumbotron a:visited {
+    color: #fff;
+}
+
+.jumbotron a:hover, .jumbotron a:active {
+    color: #ccc;
+}
+
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/static/img/header.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.header-title {
+    color: #fff;
+}
+
+.header-desc {
+    color: #fff;
 }
