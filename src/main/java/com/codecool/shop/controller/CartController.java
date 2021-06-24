@@ -22,8 +22,12 @@ public class CartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductService productService = new ProductService();
+        if(req.getSession().getAttribute("name") == null) {
+            User.getInstance().setCartError(true);
+            resp.sendRedirect(req.getHeader("referer"));
+        }
 
+        ProductService productService = new ProductService();
         User newUser = User.getInstance();
         String productIdParam = req.getParameter("productid");
         int productId = (productIdParam != null) ? Integer.parseInt(productIdParam) : 0;

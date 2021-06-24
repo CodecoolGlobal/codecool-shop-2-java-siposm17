@@ -24,13 +24,17 @@ public class CartViewController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService = new ProductService();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         User newUser = User.getInstance();
+        context.setVariable("user", newUser);
         context.setVariable("userName", newUser.getName());
         context.setVariable("shoppingCart", newUser.getShoppingCart());
         context.setVariable("cartSum", newUser.cartSum());
         context.setVariable("cartSumPrice", newUser.cartSumPrice());
+        context.setVariable("allCategories", productService.getAllCategories());
+        context.setVariable("allSuppliers", productService.getAllSuppliers());
         engine.process("product/cart.html", context, resp.getWriter());
     }
 }

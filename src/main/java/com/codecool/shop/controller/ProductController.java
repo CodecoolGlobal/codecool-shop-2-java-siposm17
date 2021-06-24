@@ -48,6 +48,10 @@ public class ProductController extends HttpServlet {
         context.setVariable("userName", User.getInstance().getName());
         context.setVariable("shoppingCart", User.getInstance().getShoppingCart());
         context.setVariable("cartSum", User.getInstance().cartSum());
+        context.setVariable("cartError", User.getInstance().isCartError());
+        User.getInstance().setCartError(false);
+        context.setVariable("loginError", User.getInstance().isLoginError());
+        User.getInstance().setLoginError(false);
 
         engine.process("product/index.html", context, resp.getWriter());
     }

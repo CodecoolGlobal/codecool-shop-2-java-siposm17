@@ -25,6 +25,14 @@
 
 <div class="container">
 
+    <div th:if="${cartError == true}" class="alert alert-danger mt-3 mb-3" role="alert">
+        You have to log in for this operation!
+    </div>
+
+    <div th:if="${loginError == true}" class="alert alert-danger mt-3 mb-3" role="alert">
+        Incorrect username/password!
+    </div>
+
     <div class="text-center mb-3">
         <h2 th:if="${category != null}" th:text="${'Category: ' + category.name}">Category Title</h2>
         <h2 th:unless="${category != null}" th:text="${'Supplier: ' + supplier.name}">Supplier name</h2>

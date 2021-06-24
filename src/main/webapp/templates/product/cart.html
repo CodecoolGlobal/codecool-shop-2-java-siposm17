@@ -79,52 +79,52 @@
                         <div class="form-group">
                             <div class="form-group col-md-6">
                                 <label for="inputName">Name</label>
-                                <input type="text" class="form-control" id="inputName" name="name" required>
+                                <input type="text" class="form-control" id="inputName" name="name" th:value="${user.fullName != '' ? user.fullName : ''}" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                                <input type="email" class="form-control" id="inputEmail4" name="email" th:value="${user.email != '' ? user.email : ''}" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" name="phone" required>
+                                <input type="text" class="form-control" id="phone" name="phone" th:value="${user.phone != '' ? user.phone : ''}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Billing Address</label>
-                            <input type="text" class="form-control" id="inputAddress" name="billing-street" placeholder="House number, Street" required>
+                            <input type="text" class="form-control" id="inputAddress" name="billing-street" placeholder="House number, Street" th:value="${user.billing_street != '' ? user.billing_street : ''}" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity2">City</label>
-                                <input type="text" class="form-control" id="inputCity2" name="billing-city" required>
+                                <input type="text" class="form-control" id="inputCity2" name="billing-city" th:value="${user.billing_city != '' ? user.billing_city : ''}" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputCountry2">Country</label>
-                                <input type="text" class="form-control" id="inputCountry2" name="billing-country" required>
+                                <input type="text" class="form-control" id="inputCountry2" name="billing-country" th:value="${user.billing_country != '' ? user.billing_country : ''}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip2">Zip</label>
-                                <input type="text" class="form-control" id="inputZip2" name="billing-zip" required>
+                                <input type="text" class="form-control" id="inputZip2" name="billing-zip" th:value="${user.billing_zip != '' ? user.billing_zip : ''}" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputAddress2">Shipping Address</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="House number, Street" name="shipping-street" required>
+                            <input type="text" class="form-control" id="inputAddress2" placeholder="House number, Street" name="shipping-street" th:value="${user.shipping_street != '' ? user.shipping_street : ''}" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity" name="shipping-city" required>
+                                <input type="text" class="form-control" id="inputCity" name="shipping-city" th:value="${user.shipping_city != '' ? user.shipping_city : ''}" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputCountry">Country</label>
-                                <input type="text" class="form-control" id="inputCountry" name="shipping-country" required>
+                                <input type="text" class="form-control" id="inputCountry" name="shipping-country" th:value="${user.shipping_country != '' ? user.shipping_country : ''}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip" name="shipping-zip" required>
+                                <input type="text" class="form-control" id="inputZip" name="shipping-zip" th:value="${user.shipping_zip != '' ? user.shipping_zip : ''}" required>
                             </div>
                         </div>
                 </div>

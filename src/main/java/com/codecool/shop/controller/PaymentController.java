@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 @WebServlet(urlPatterns = {"/payment"})
 public class PaymentController extends HttpServlet {
@@ -69,6 +70,7 @@ public class PaymentController extends HttpServlet {
                 User.getInstance().setNewOrder(new Order(OrderType.FAILED));
                 isError = "true";
             } finally {
+                User.getInstance().setShoppingCart(new HashMap<>());
                 context.setVariable("isError", isError);
                 engine.process("product/confirmation-page.html", context, resp.getWriter());
             }

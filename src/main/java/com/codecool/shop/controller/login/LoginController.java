@@ -1,5 +1,7 @@
 package com.codecool.shop.controller.login;
 
+import com.codecool.shop.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +17,11 @@ public class LoginController extends HttpServlet {
         String username = req.getParameter("name");
         String password = req.getParameter("password");
 
-        if(username.equals("alma") && password.equals("alma")) {
+        if(username.equals("Bela") && password.equals("codecoolshop")) {
             HttpSession session = req.getSession();
             session.setAttribute("name", username);
+        } else {
+            User.getInstance().setLoginError(true);
         }
 
         resp.sendRedirect(req.getHeader("referer"));
